@@ -6,10 +6,6 @@
 
 ---
 
-## MVP Nedir?
-
-> "MVP = Test makinesi. Mükemmel olmak zorunda değil; gerçek kullanıcıyla test edilebilir olmalı."
-
 UniNode MVP'sinin amacı şu soruyu yanıtlamaktır:
 
 **"Öğrenci kimlik doğrulamalı, chat ve etkinlik odaklı bir sosyal uygulamaya gerçek talep var mı?"**
@@ -91,15 +87,6 @@ UniNode MVP'sinin amacı şu soruyu yanıtlamaktır:
 | **Önemli** | Kimlik doğrulama, profil, chat (DM), post atma, keşif, başvuru akışı | Grup chat, filtreler, bildirimler |
 | **Önemsiz** | — | Stories, ödeme, konum eşleşme |
 
----
-
-## Minimalizm Prensibi
-
-Her feature için sorulması gereken soru:
-
-> "Bunu silsem uygulama hala çalışır mı?"
-
-MVP'deki 6 feature'dan herhangi biri çıkarıldığında temel akış bozulur. Chat özelliği kullanıcıların platforma geri dönme nedenidir — etkinlik dışında da bağlantıda kalmalarını sağlar.
 
 ---
 
@@ -124,7 +111,3 @@ Sprint 3: Post atma + keşif ekranı
 Sprint 4: Başvuru / kabul akışı + chat entegrasyonu
 Sprint 5: Test, hata düzeltme, ilk kullanıcı lansmanı
 ```
-
----
-
-*Bu doküman UniNode PRD.md ile birlikte MVP sürecini yönetmek için oluşturulmuştur.*
