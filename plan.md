@@ -1,8 +1,5 @@
 # UniNode — LLM Implementation Plan
 
-> Bu doküman, MVP_Kapsam.md ve PRD.md temel alınarak LLM coding asistanlarının
-> (Claude Code, Cursor, Copilot vb.) adım adım takip edebileceği şekilde hazırlanmıştır.
-> Her adım bağımsız, doğrulanabilir ve sıralı olarak uygulanabilir.
 
 ---
 
@@ -548,7 +545,3 @@ Profil bilgileri görünüyor
 | 12 | Navigasyon & profil | Frontend |
 | 13 | Entegrasyon testi | Her ikisi |
 
----
-
-*Bu plan UniNode PRD.md ve MVP_Kapsam.md dokümanlarına dayanmaktadır.*
-*Her adım önceki adımın tamamlanmış olmasını gerektirir.*
