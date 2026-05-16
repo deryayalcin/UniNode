@@ -1,0 +1,89 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String   @id @default(cuid())
+  name         String
+  email        String   @unique
+  passwordHash String
+  university   String?
+  bio          String?
+  avatarUrl    String?
+  cardImageUrl String
+  isVerified   Boolean  @default(false)
+  interests    String[] @default([])
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  posts         Post[]
+  applications  Application[]
+  sentMessages  Message[]               @relation("sender")
+  conversations ConversationParticipant[]
+}
+
+model Post {
+  id          String   @id @default(cuid())
+  title       String
+  description String?
+  eventType   String   // konser | sinema | spor | gezi | diger
+  eventDate   DateTime
+  spotsNeeded Int
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  author       User          @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  authorId     String
+  applications Application[]
+}
+
+model Application {
+  id        String   @id @default(cuid())
+  status    String   @default("pending") // pending | accepted | rejected
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  post        Post   @relation(fields: [postId], references: [id], onDelete: Cascade)
+  postId      String
+  applicant   User   @relation(fields: [applicantId], references: [id], onDelete: Cascade)
+  applicantId String
+
+  @@unique([postId, applicantId])
+}
+
+model Conversation {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+
+  participants ConversationParticipant[]
+  messages     Message[]
+}
+
+model ConversationParticipant {
+  conversation   Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  conversationId String
+  user           User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId         String
+
+  @@id([conversationId, userId])
+}
+
+model Message {
+  id        String   @id @default(cuid())
+  content   String
+  createdAt DateTime @default(now())
+
+  conversation   Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  conversationId String
+  sender         User         @relation("sender", fields: [senderId], references: [id], onDelete: Cascade)
+  senderId       String
+}
